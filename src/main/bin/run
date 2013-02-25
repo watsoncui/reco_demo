@@ -1,0 +1,27 @@
+#!/bin/sh
+ulimit -HSn 65535
+JAVA_HOME=/usr
+SERVER_HOME=`dirname $0`
+LIB_DIR=$SERVER_HOME/lib
+TMP_DIR=/tmp
+SERVER_OPTS="-Xms2048M -Xmx8192M -Dfile.encoding=UTF-8"
+APP_NAME_OPTS="-Dapp.name=RecommandServer"
+CLASSPATH=$SERVER_HOME/conf:$SERVER_HOME/classes:$SERVER_HOME/resources:$JAVA_HOME/lib/tools.jar
+for jar in `ls $LIB_DIR/*.jar`
+do
+	CLASSPATH=$CLASSPATH:$jar
+done
+
+exec $JAVA_HOME/bin/java \
+$APP_NAME_OPTS \
+$SERVER_OPTS \
+-Djava.io.tmpdir=$TMP_DIR \
+-DTestEnv=false \
+-DHome=true \
+-Dcom.sun.management.jmxremote \
+-Dcom.sun.management.jmxremote.port=13333 \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.ssl=false \
+-cp $CLASSPATH \
+com.renren.reco.demo.start.ServerStarter \
+--Ice.Config=$SERVER_HOME/conf/ice.conf \

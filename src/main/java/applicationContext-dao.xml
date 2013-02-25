@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+    <bean id="jade.dataSource.com.renren.reco.demo.dao" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="jdbc:mysql://10.4.16.208:3306/recommand"></property>
+        <property name="username" value="x2"></property>
+        <property name="password" value="x2"></property>
+    </bean>
+    
+</beans>

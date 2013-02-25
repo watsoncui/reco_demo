@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    
+	<bean id="computeRecommand" class="com.renren.reco.demo.task.ComputeRecommand">
+		<property name="recommandManager" ref="recommandManager"/>
+	</bean>
+	
+	<bean id="computeRecommandTimerJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="computeRecommand" />  
+        <property name="targetMethod" value="computeRecommand" />  
+        <property name="concurrent" value="false"/>
+	</bean>
+	
+	<bean id="computeRecommandTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">  
+        <property name="jobDetail" ref="computeRecommandTimerJob" />  
+        <property name="cronExpression" value="0 0 1 * * ? *" />  
+    </bean> 
+	<!-- 启动定时器 -->
+	<bean id="timerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">  
+            <list>  
+                <ref bean="computeRecommandTimerTrigger" />  
+            </list>  
+        </property>  
+	</bean>
+</beans>

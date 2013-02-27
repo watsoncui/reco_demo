@@ -1,10 +1,6 @@
 package com.renren.reco.demo.start;
 
 import net.paoding.rose.scanning.context.RoseAppContext;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-
 import Ice.Object;
 
 public class ServerStarter {

@@ -6,7 +6,6 @@ import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.SQL;
 
 import com.renren.reco.demo.bean.ProfileDTO;
-import com.renren.reco.demo.util.DataSourceCatalog;
 
 @DAO
 public interface IProfileDAO {

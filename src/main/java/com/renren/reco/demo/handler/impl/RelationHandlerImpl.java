@@ -26,6 +26,9 @@ public class RelationHandlerImpl implements IRelationHandler {
 			if(null != relationDAO.getRelation(relationDTO.getUploaderPhoneNumber(), relationDTO.getContactorPhoneNumber())) {
 				return true;
 			}
+			if(null != relationDAO.getRelation(relationDTO.getContactorPhoneNumber(), relationDTO.getUploaderPhoneNumber())) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -33,8 +36,13 @@ public class RelationHandlerImpl implements IRelationHandler {
 	@Override
 	public List<RelationDTO> getRelations(long phoneNumber) {
 		return relationDAO.getRelations(phoneNumber);
+		
 	}
-
+	
+	@Override
+	public List<RelationDTO> getReverseRelations(long phoneNumber) {
+		return relationDAO.getReverseRelations(phoneNumber);
+	}
 	public void setRelationDAO(IRelationDAO relationDAO) {
 		this.relationDAO = relationDAO;
 	}

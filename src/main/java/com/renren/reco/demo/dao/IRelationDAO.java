@@ -22,6 +22,9 @@ public interface IRelationDAO {
 	@SQL("SELECT " + OPN + " ," + APN + " FROM " + TABLE + " WHERE " + OPN + "=:1")
 	public List<RelationDTO> getRelations(long uploaderPhoneNumber);
 	
+	@SQL("SELECT " + OPN + " ," + APN + " FROM " + TABLE + " WHERE " + APN + "=:1")
+	public List<RelationDTO> getReverseRelations(long contactor_phone_number);
+	
 	@SQL("SELECT " + OPN + " ," + APN + " FROM " + TABLE + " WHERE " + OPN + "=:1 AND " + APN + " =:2")
 	public RelationDTO getRelation(long uploaderPhoneNumber, long contactorPhoneNumber);
 }

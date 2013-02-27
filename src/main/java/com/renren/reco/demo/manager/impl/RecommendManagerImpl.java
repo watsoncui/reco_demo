@@ -49,6 +49,17 @@ public class RecommendManagerImpl implements IRecommendManager {
 			return list;
 		}
 	}
+	
+
+	@Override
+	public List<RelationDTO> sendReverseRelation(long phoneNumber) {
+		List<RelationDTO> list = relationHandler.getReverseRelations(phoneNumber);
+		if(null == list) {
+			return new ArrayList<RelationDTO>();
+		} else {
+			return list;
+		}
+	}
 
 	@Override
 	public void recieveRecommend(List<RecommendDTO> recommendDTOList) {
@@ -99,7 +110,4 @@ public class RecommendManagerImpl implements IRecommendManager {
 	public void setRelationHandler(IRelationHandler relationHandler) {
 		this.relationHandler = relationHandler;
 	}
-
-	
-
 }

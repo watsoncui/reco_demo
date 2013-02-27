@@ -8,4 +8,5 @@ public interface IRelationHandler {
 	public void setRelation(RelationDTO relationDTO);
 	public boolean isExist(RelationDTO relationDTO);
 	public List<RelationDTO> getRelations(long phoneNumber);
+	public List<RelationDTO> getReverseRelations(long phoneNumber);
 }

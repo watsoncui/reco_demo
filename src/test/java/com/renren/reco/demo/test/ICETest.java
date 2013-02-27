@@ -14,7 +14,7 @@ public class ICETest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Ice.Communicator ic = Util.initialize();
-		 Ice.ObjectPrx base = ic.stringToProxy("RecommandService:default -h 10.4.16.206 -p 10000");
+		 Ice.ObjectPrx base = ic.stringToProxy("RecommandService:default -h 127.0.0.1 -p 10000");
 		 RecoServicePrx recommandService = RecoServicePrxHelper.checkedCast(base);
          
 		 RecommandResult result = recommandService.getRecommandation(12345678);

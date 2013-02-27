@@ -16,9 +16,9 @@ public class ServerStarter {
 
         System.out.println("start");
         RoseAppContext rose = new RoseAppContext();
-        String xmlLocation = "resources/spring/applicationContext-*.xml";
-        ApplicationContext context = new FileSystemXmlApplicationContext(
-                new String[] { xmlLocation }, rose);
+       // String xmlLocation = "resources/spring/applicationContext-*.xml";
+        //RoseAppContext context = new FileSystemXmlApplicationContext(
+          //      new String[] { xmlLocation }, rose);
 
         Ice.Communicator ic = null;
         try {
@@ -26,7 +26,7 @@ public class ServerStarter {
             Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints(
                     "RecommandServiceAdapter", "default -p 10000");
 
-            adapter.add((Object) context.getBean("recommandService"),
+            adapter.add((Object) rose.getBean("recommandService"),
                     Ice.Util.stringToIdentity("RecommandService"));
 
             adapter.activate();

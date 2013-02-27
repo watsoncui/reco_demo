@@ -5,27 +5,27 @@ import java.util.List;
 
 import Ice.Current;
 
-import com.renren.reco.demo.manager.IRecommandManager;
+import com.renren.reco.demo.manager.IRecommendManager;
 import com.renren.recommand.demo.RecoErrorCodeEnum;
 import com.renren.recommand.demo.RecommandResult;
 import com.renren.recommand.demo.UserProfile;
 import com.renren.recommand.demo._RecoServiceDisp;
 
-public class RecommandServiceImpl extends _RecoServiceDisp {
+public class RecommendServiceImpl extends _RecoServiceDisp {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7386196684826218481L;	
 	
-	private IRecommandManager recommandManager;
+	private IRecommendManager recommendManager;
 	
 	@Override
 	public RecommandResult getRecommandation(long userPhoneNumber, Current _current) {
 		RecommandResult recommandResult = new RecommandResult();
 		List<UserProfile> userProfileList = new ArrayList<UserProfile>();
-		if(recommandManager.isUserExist(userPhoneNumber)) {
-			recommandResult.setContacts(recommandManager.getRecommands(userPhoneNumber));
+		if(recommendManager.isUserExist(userPhoneNumber)) {
+			recommandResult.setContacts(recommendManager.getRecommends(userPhoneNumber));
 			recommandResult.setSuccess(true);
 			recommandResult.setErrorCode(RecoErrorCodeEnum.SystemSuccess);
 			recommandResult.setErrorMessage("Operate Success!");
@@ -38,8 +38,8 @@ public class RecommandServiceImpl extends _RecoServiceDisp {
 		return recommandResult;
 	}
 
-	public void setRecommandManager(IRecommandManager recommandManager) {
-		this.recommandManager = recommandManager;
+	public void setRecommendManager(IRecommendManager recommendManager) {
+		this.recommendManager = recommendManager;
 	}
 
 }

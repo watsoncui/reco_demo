@@ -3,21 +3,21 @@ package com.renren.reco.demo.manager.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.renren.reco.demo.bean.RecommandDTO;
+import com.renren.reco.demo.bean.RecommendDTO;
 import com.renren.reco.demo.bean.RelationDTO;
 import com.renren.reco.demo.handler.IProfileHandler;
-import com.renren.reco.demo.handler.IRecommandHandler;
+import com.renren.reco.demo.handler.IRecommendHandler;
 import com.renren.reco.demo.handler.IRelationHandler;
-import com.renren.reco.demo.manager.IRecommandManager;
+import com.renren.reco.demo.manager.IRecommendManager;
 import com.renren.recommand.demo.UserProfile;
 
-public class RecommandManagerImpl implements IRecommandManager {
+public class RecommendManagerImpl implements IRecommendManager {
 
 	private static final String TEST = "test";
 	
 	private IProfileHandler profileHandler;
 	
-	private IRecommandHandler recommandHandler;
+	private IRecommendHandler recommendHandler;
 	
 	private IRelationHandler relationHandler;
 	
@@ -51,14 +51,14 @@ public class RecommandManagerImpl implements IRecommandManager {
 	}
 
 	@Override
-	public void recieveRecommand(List<RecommandDTO> recommandDTOList) {
-		if(null != recommandDTOList) {
-			for(RecommandDTO recommandDTO:recommandDTOList) {
-				if(null != recommandDTO) {
-					if(recommandHandler.isExist(recommandDTO)) {
-						recommandHandler.updateRecommand(recommandDTO);
+	public void recieveRecommend(List<RecommendDTO> recommendDTOList) {
+		if(null != recommendDTOList) {
+			for(RecommendDTO recommendDTO:recommendDTOList) {
+				if(null != recommendDTO) {
+					if(recommendHandler.isExist(recommendDTO)) {
+						recommendHandler.updateRecommend(recommendDTO);
 					} else {
-						recommandHandler.setRecommand(recommandDTO);
+						recommendHandler.setRecommend(recommendDTO);
 					}
 				}
 			}
@@ -66,11 +66,11 @@ public class RecommandManagerImpl implements IRecommandManager {
 	}
 
 	@Override
-	public List<UserProfile> getRecommands(long phoneNumber) {
+	public List<UserProfile> getRecommends(long phoneNumber) {
 		List<UserProfile> userProfileList = new ArrayList<UserProfile>();
-		List<RecommandDTO> recommandDTOList = recommandHandler.getRecommands(phoneNumber);
-		for(RecommandDTO recommandDTO:recommandDTOList) {
-			UserProfile userProfile = recommandDTO2UserProfile(recommandDTO);
+		List<RecommendDTO> recommendDTOList = recommendHandler.getRecommends(phoneNumber);
+		for(RecommendDTO recommendDTO:recommendDTOList) {
+			UserProfile userProfile = recommendDTO2UserProfile(recommendDTO);
 			if((null != userProfile.getUserName()) && (userProfile.getUserName().equals(TEST))) {
 				userProfileList.add(userProfile);
 			}
@@ -78,12 +78,12 @@ public class RecommandManagerImpl implements IRecommandManager {
 		return userProfileList;
 	}
 	
-	private UserProfile recommandDTO2UserProfile(RecommandDTO recommandDTO) {
+	private UserProfile recommendDTO2UserProfile(RecommendDTO recommendDTO) {
 		UserProfile userProfile = new UserProfile();
-		if(null != recommandDTO) {
+		if(null != recommendDTO) {
 			userProfile.setUserName(TEST);
-			userProfile.setPhoneNumber(recommandDTO.getRecommandPhoneNumber());
-			userProfile.setScore(recommandDTO.getScore());
+			userProfile.setPhoneNumber(recommendDTO.getRecommendPhoneNumber());
+			userProfile.setScore(recommendDTO.getScore());
 		}
 		return userProfile;
 	}
@@ -92,8 +92,8 @@ public class RecommandManagerImpl implements IRecommandManager {
 		this.profileHandler = profileHandler;
 	}
 
-	public void setRecommandHandler(IRecommandHandler recommandHandler) {
-		this.recommandHandler = recommandHandler;
+	public void setRecommendHandler(IRecommendHandler recommendHandler) {
+		this.recommendHandler = recommendHandler;
 	}
 
 	public void setRelationHandler(IRelationHandler relationHandler) {

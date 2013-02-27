@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.renren.reco.demo.bean.ProfileDTO;
-import com.renren.reco.demo.bean.RecommandDTO;
+import com.renren.reco.demo.bean.RecommendDTO;
 import com.renren.reco.demo.bean.RelationDTO;
 import com.renren.reco.demo.dao.IProfileDAO;
-import com.renren.reco.demo.dao.IRecommandDAO;
+import com.renren.reco.demo.dao.IRecommendDAO;
 import com.renren.reco.demo.dao.IRelationDAO;
 
 import net.paoding.rose.scanning.context.RoseAppContext;
@@ -19,7 +19,7 @@ public class DAOTest {
     	RoseAppContext ctx = new RoseAppContext();
 
         IProfileDAO profileDAO = ctx.getBean(IProfileDAO.class);
-        IRecommandDAO recommandDAO = ctx.getBean(IRecommandDAO.class);
+        IRecommendDAO recommendDAO = ctx.getBean(IRecommendDAO.class);
         IRelationDAO relationDAO = ctx.getBean(IRelationDAO.class);
         
         long phoneNumber = 12345678;
@@ -58,34 +58,34 @@ public class DAOTest {
     	}
     	System.out.println();
     	
-    	RecommandDTO recommandDTO = new RecommandDTO();
-    	recommandDTO.setUploaderPhoneNumber(12345678910L);
-    	recommandDTO.setRecommandPhoneNumber(87654321);
-    	recommandDTO.setIsSuccess(0);
-    	recommandDTO.setVerifyTime(0L);
-    	recommandDTO.setRecommandTime((new Date()).getTime());
-    	recommandDTO.setScore(2.5);
-    	recommandDAO.insertRecommand(recommandDTO);
-    	recommandDTO.setUploaderPhoneNumber(12345678910L);
-    	recommandDTO.setRecommandPhoneNumber(654321);
-    	recommandDTO.setIsSuccess(0);
-    	recommandDTO.setVerifyTime(0L);
-    	recommandDTO.setRecommandTime((new Date()).getTime());
-    	recommandDTO.setScore(2.5);
-    	recommandDAO.insertRecommand(recommandDTO);
-    	recommandDTO.setScore(3.5);
-    	recommandDAO.updateRecommand(recommandDTO);
+    	RecommendDTO recommendDTO = new RecommendDTO();
+    	recommendDTO.setUploaderPhoneNumber(12345678910L);
+    	recommendDTO.setRecommendPhoneNumber(87654321);
+    	recommendDTO.setIsSuccess(0);
+    	recommendDTO.setVerifyTime(0L);
+    	recommendDTO.setRecommendTime((new Date()).getTime());
+    	recommendDTO.setScore(2.5);
+    	recommendDAO.insertRecommend(recommendDTO);
+    	recommendDTO.setUploaderPhoneNumber(12345678910L);
+    	recommendDTO.setRecommendPhoneNumber(654321);
+    	recommendDTO.setIsSuccess(0);
+    	recommendDTO.setVerifyTime(0L);
+    	recommendDTO.setRecommendTime((new Date()).getTime());
+    	recommendDTO.setScore(2.5);
+    	recommendDAO.insertRecommend(recommendDTO);
+    	recommendDTO.setScore(3.5);
+    	recommendDAO.updateRecommend(recommendDTO);
     	
-    	recommandDTO = recommandDAO.getRecommand(12345678910L, 654321);
-    	System.out.println(recommandDTO.getUploaderPhoneNumber());
-    	System.out.println(recommandDTO.getRecommandPhoneNumber());
-    	System.out.println(recommandDTO.getScore());
+    	recommendDTO = recommendDAO.getRecommend(12345678910L, 654321);
+    	System.out.println(recommendDTO.getUploaderPhoneNumber());
+    	System.out.println(recommendDTO.getRecommendPhoneNumber());
+    	System.out.println(recommendDTO.getScore());
     	System.out.println();
     	
-    	List<RecommandDTO> recommandDTOList = recommandDAO.getRecommands(12345678910L);
-    	for(int i = 0; i < recommandDTOList.size(); i++) {
-    		System.out.println(recommandDTOList.get(i).getRecommandPhoneNumber());
-    		System.out.println(recommandDTOList.get(i).getScore());
+    	List<RecommendDTO> recommendDTOList = recommendDAO.getRecommends(12345678910L);
+    	for(int i = 0; i < recommendDTOList.size(); i++) {
+    		System.out.println(recommendDTOList.get(i).getRecommendPhoneNumber());
+    		System.out.println(recommendDTOList.get(i).getScore());
     		System.out.println();
     	}
     	

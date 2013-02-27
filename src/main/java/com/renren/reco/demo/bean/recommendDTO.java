@@ -1,12 +1,12 @@
 package com.renren.reco.demo.bean;
 
-public class RecommandDTO {
+public class RecommendDTO {
 
 	private long uploaderPhoneNumber;
 	
-	private long recommandPhoneNumber;
+	private long recommendPhoneNumber;
 	
-	private long recommandTime;
+	private long recommendTime;
 	
 	private long verifyTime;
 	
@@ -14,12 +14,12 @@ public class RecommandDTO {
 	
 	private double score;
 	
-	public RecommandDTO () {
+	public RecommendDTO () {
 		
 	}
-	public RecommandDTO (Long uploaderPhoneNumber,Long recommandPhoneNumber, Double score) {
+	public RecommendDTO (Long uploaderPhoneNumber,Long recommendPhoneNumber, Double score) {
 		this.uploaderPhoneNumber = uploaderPhoneNumber;
-		this.recommandPhoneNumber = recommandPhoneNumber;
+		this.recommendPhoneNumber = recommendPhoneNumber;
 		this.score = score;
 	}
 	
@@ -31,20 +31,20 @@ public class RecommandDTO {
 		this.uploaderPhoneNumber = uploaderPhoneNumber;
 	}
 
-	public long getRecommandPhoneNumber() {
-		return recommandPhoneNumber;
+	public long getRecommendPhoneNumber() {
+		return recommendPhoneNumber;
 	}
 
-	public void setRecommandPhoneNumber(long recommandPhoneNumber) {
-		this.recommandPhoneNumber = recommandPhoneNumber;
+	public void setRecommendPhoneNumber(long recommendPhoneNumber) {
+		this.recommendPhoneNumber = recommendPhoneNumber;
 	}
 
-	public long getRecommandTime() {
-		return recommandTime;
+	public long getRecommendTime() {
+		return recommendTime;
 	}
 
-	public void setRecommandTime(long recommandTime) {
-		this.recommandTime = recommandTime;
+	public void setRecommendTime(long recommendTime) {
+		this.recommendTime = recommendTime;
 	}
 
 	public long getVerifyTime() {

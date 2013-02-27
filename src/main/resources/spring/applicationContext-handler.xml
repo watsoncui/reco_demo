@@ -8,6 +8,6 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<bean id="profileHandler" class="com.renren.reco.demo.handler.impl.ProfileHandlerImpl" />
-	<bean id="recommandHandler" class="com.renren.reco.demo.handler.impl.RecommandHandlerImpl" />
+	<bean id="recommendHandler" class="com.renren.reco.demo.handler.impl.RecommendHandlerImpl" />
 	<bean id="relationHandler" class="com.renren.reco.demo.handler.impl.RelationHandlerImpl" />
 </beans>

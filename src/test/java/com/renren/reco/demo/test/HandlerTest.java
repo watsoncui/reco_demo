@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.renren.reco.demo.bean.ProfileDTO;
-import com.renren.reco.demo.bean.RecommandDTO;
+import com.renren.reco.demo.bean.RecommendDTO;
 import com.renren.reco.demo.bean.RelationDTO;
 import com.renren.reco.demo.handler.IProfileHandler;
-import com.renren.reco.demo.handler.IRecommandHandler;
+import com.renren.reco.demo.handler.IRecommendHandler;
 import com.renren.reco.demo.handler.IRelationHandler;
 
 import net.paoding.rose.scanning.context.RoseAppContext;
@@ -17,7 +17,7 @@ public class HandlerTest {
 		RoseAppContext ctx = new RoseAppContext();
 		
 		IProfileHandler profileHandler = ctx.getBean(IProfileHandler.class);
-		IRecommandHandler recommandHandler = ctx.getBean(IRecommandHandler.class);
+		IRecommendHandler recommendHandler = ctx.getBean(IRecommendHandler.class);
 		IRelationHandler relationHandler = ctx.getBean(IRelationHandler.class);
 		
 		ProfileDTO profileDTO = new ProfileDTO();
@@ -35,32 +35,32 @@ public class HandlerTest {
 		}
 		System.out.println();
 		
-		RecommandDTO recommandDTO = new RecommandDTO();
-    	recommandDTO.setUploaderPhoneNumber(1234567890L);
-    	recommandDTO.setRecommandPhoneNumber(87654321);
-    	recommandDTO.setIsSuccess(0);
-    	recommandDTO.setVerifyTime(0L);
-    	recommandDTO.setRecommandTime((new Date()).getTime());
-    	recommandDTO.setScore(2.5);
-    	System.out.println(recommandHandler.isExist(recommandDTO));
-    	recommandHandler.setRecommand(recommandDTO);
-    	System.out.println(recommandHandler.isExist(recommandDTO));
+		RecommendDTO recommendDTO = new RecommendDTO();
+    	recommendDTO.setUploaderPhoneNumber(1234567890L);
+    	recommendDTO.setRecommendPhoneNumber(87654321);
+    	recommendDTO.setIsSuccess(0);
+    	recommendDTO.setVerifyTime(0L);
+    	recommendDTO.setRecommendTime((new Date()).getTime());
+    	recommendDTO.setScore(2.5);
+    	System.out.println(recommendHandler.isExist(recommendDTO));
+    	recommendHandler.setRecommend(recommendDTO);
+    	System.out.println(recommendHandler.isExist(recommendDTO));
 
-    	recommandDTO.setUploaderPhoneNumber(1234567890L);
-    	recommandDTO.setRecommandPhoneNumber(654321);
-    	recommandDTO.setIsSuccess(0);
-    	recommandDTO.setVerifyTime(0L);
-    	recommandDTO.setRecommandTime((new Date()).getTime());
-    	recommandDTO.setScore(2.5);
-    	recommandHandler.setRecommand(recommandDTO);
-    	recommandDTO.setScore(3.5);
-    	recommandHandler.updateRecommand(recommandDTO);
+    	recommendDTO.setUploaderPhoneNumber(1234567890L);
+    	recommendDTO.setRecommendPhoneNumber(654321);
+    	recommendDTO.setIsSuccess(0);
+    	recommendDTO.setVerifyTime(0L);
+    	recommendDTO.setRecommendTime((new Date()).getTime());
+    	recommendDTO.setScore(2.5);
+    	recommendHandler.setRecommend(recommendDTO);
+    	recommendDTO.setScore(3.5);
+    	recommendHandler.updateRecommend(recommendDTO);
     	
-    	List<RecommandDTO> recommandList = recommandHandler.getRecommands(1234567890L);
-    	for(RecommandDTO recommand:recommandList) {
-    		System.out.println(recommand.getRecommandPhoneNumber());
-    		System.out.println(recommand.getRecommandTime());
-    		System.out.println(recommand.getScore());
+    	List<RecommendDTO> recommendList = recommendHandler.getRecommends(1234567890L);
+    	for(RecommendDTO recommend:recommendList) {
+    		System.out.println(recommend.getRecommendPhoneNumber());
+    		System.out.println(recommend.getRecommendTime());
+    		System.out.println(recommend.getScore());
     		System.out.println();
     	}
     	

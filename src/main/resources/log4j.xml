@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="rootAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/server_log/logs/demo_reco/stdout.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %t %5p   - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="infoAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/server_log/logs/demo_reco/info.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="accessAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/server_log/logs/demo_reco/access.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="errorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/server_log/logs/demo_reco/exception.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %t %5p   - %m%n" />
+		</layout>
+	</appender>
+
+    <appender name="CoalescingStatistics" class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice" value="10000"/>
+        <appender-ref ref="fileAppender"/>
+    </appender>
+	
+	<logger name="exception" additivity="false">
+		<level value="error" />
+		<appender-ref ref="errorAppender" />
+	</logger>
+	
+	<logger name="com.renren.reco.demo" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="consoleAppender" />
+	</logger>
+	
+	<logger name="info" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="infoAppender" />
+	</logger>
+	
+	<logger name="access" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="accessAppender" />
+	</logger>
+	
+	<root>
+		<level value="error" />
+		<appender-ref ref="rootAppender" />
+	</root>
+
+</log4j:configuration>

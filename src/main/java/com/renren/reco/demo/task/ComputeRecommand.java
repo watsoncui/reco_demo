@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import com.renren.reco.demo.task.Deg2friend;
 import com.renren.reco.demo.task.Deg2friend.Node;
@@ -16,11 +17,13 @@ import com.renren.reco.demo.manager.IRecommandManager;
 
 public class ComputeRecommand {
 
+	private final static Logger logger = Logger.getLogger(ComputeRecommand.class.getName());
 	private IRecommandManager recommandManager;
 	private Deg2friend compute = new Deg2friend();
 	
 	public void computeRecommand() {
 		List<Long> profileList = recommandManager.sendProfileData();
+		logger.info("quartz task, read all profiles " + profileList.get(0));
 		List<List<RelationDTO>> allRelations = new ArrayList<List<RelationDTO>>();
 		List<List<RecommandDTO>> allRecommands = new ArrayList<List<RecommandDTO>>();
 		if(null == profileList) 

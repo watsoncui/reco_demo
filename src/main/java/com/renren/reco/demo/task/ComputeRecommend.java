@@ -161,6 +161,7 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 					}
 					
 					for(long profile2:optionList) {
+						logger.info("" + profile + " " + profile2);
 						if((profile2 != profile) && (!profileInList(profile2, relationList)) && (!profileInReverseList(profile2, reverseRelationList))) {
 							List<RelationDTO> optionProfileList = recommendManager.sendRelation(profile2);
 							List<RelationDTO> optionReverseProfileList = recommendManager.sendReverseRelation(profile2);
@@ -168,6 +169,7 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 							if(score > 0) {
 								RecommendDTO recommendDTO = new RecommendDTO();
 								recommendDTO.setRecommendPhoneNumber(profile2);
+								recommendDTO.setScore(score);
 								recommendDTO.setIsSuccess(0);
 								recommendDTO.setRecommendTime((new Date()).getTime());
 								recommendDTO.setUploaderPhoneNumber(profile);

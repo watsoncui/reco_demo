@@ -166,6 +166,7 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 							List<RelationDTO> optionProfileList = recommendManager.sendRelation(profile2);
 							List<RelationDTO> optionReverseProfileList = recommendManager.sendReverseRelation(profile2);
 							int score = commonFriends(relationList, optionProfileList, reverseRelationList, optionReverseProfileList);
+							logger.info("" + score);
 							if(score > 0) {
 								RecommendDTO recommendDTO = new RecommendDTO();
 								recommendDTO.setRecommendPhoneNumber(profile2);

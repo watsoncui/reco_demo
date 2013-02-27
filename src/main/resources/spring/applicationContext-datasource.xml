@@ -7,17 +7,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean id="jade.dataSource.com.renren.reco.demo.dao.IProfileDAO" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>
-    <bean id="jade.dataSource.com.renren.reco.demo.dao.IRecommandDAO" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>
-    <bean id="jade.dataSource.com.renren.reco.demo.dao.IRelationDAO" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="jade.dataSource.com.renren.reco.demo.dao" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="url" value="${jdbc.url}"></property>
         <property name="username" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>

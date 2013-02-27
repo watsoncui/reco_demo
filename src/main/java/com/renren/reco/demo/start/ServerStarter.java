@@ -24,7 +24,7 @@ public class ServerStarter {
         try {
             ic = Ice.Util.initialize(args);
             Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints(
-                    "RecommandServiceAdapter", "default -p 10007");
+                    "RecommandServiceAdapter", "default -p 10000");
 
             adapter.add((Object) context.getBean("recommandService"),
                     Ice.Util.stringToIdentity("RecommandService"));

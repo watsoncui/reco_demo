@@ -18,7 +18,7 @@
 	
 	<bean id="computeRecommandTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">  
         <property name="jobDetail" ref="computeRecommandTimerJob" />  
-        <property name="cronExpression" value="0 0 1 * * ? *" />  
+        <property name="cronExpression" value="0 0/10 15 * * ?" />  
     </bean> 
 	<!-- 启动定时器 -->
 	<bean id="timerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

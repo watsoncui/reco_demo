@@ -14,10 +14,10 @@ public class ICETest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Ice.Communicator ic = Util.initialize();
-		 Ice.ObjectPrx base = ic.stringToProxy("RecommandService:default -h 10.4.16.206 -p 10000");
-		 RecoServicePrx recommandService = RecoServicePrxHelper.checkedCast(base);
+		 Ice.ObjectPrx base = ic.stringToProxy("RecommendService:default -h 10.4.16.206 -p 10000");
+		 RecoServicePrx recommendService = RecoServicePrxHelper.checkedCast(base);
          
-		 RecommandResult result = recommandService.getRecommandation(13001106232L);
+		 RecommandResult result = recommendService.getRecommandation(13001106232L);
 		 System.out.println(result.getSuccess());
 		 System.out.println(result.getErrorCode());
 		 System.out.println(result.getErrorMessage());

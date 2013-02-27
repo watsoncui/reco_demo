@@ -24,10 +24,10 @@ public class ServerStarter {
         try {
             ic = Ice.Util.initialize(args);
             Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints(
-                    "RecommandServiceAdapter", "default -p 10000");
+                    "RecommendServiceAdapter", "default -p 10000");
 
-            adapter.add((Object) rose.getBean("recommandService"),
-                    Ice.Util.stringToIdentity("RecommandService"));
+            adapter.add((Object) rose.getBean("recommendService"),
+                    Ice.Util.stringToIdentity("RecommendService"));
 
             adapter.activate();
             System.out.println("success");

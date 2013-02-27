@@ -55,8 +55,22 @@ public class ComputeRecommend {
 				List<RelationDTO> relationList = recommendManager.sendRelation(profile);
 				if(relationList.size() > 0) {
 					List<RecommendDTO> recommendList = new ArrayList<RecommendDTO>();
-					for(long profile2:profileList) {
-						if(!profileInList(profile2, relationList)) {
+					List<Long> optionList = new ArrayList<Long>();
+					for(RelationDTO relation:relationList) {
+						if(null != relation) {
+							List<RelationDTO> hisRelationList = recommendManager.sendRelation(relation.getUploaderPhoneNumber());
+							if(null != hisRelationList) {
+								for(RelationDTO hisRelation:hisRelationList) {
+									if(null != hisRelation) {
+										optionList.add(hisRelation.getContactorPhoneNumber());
+									}
+								}
+							}
+						}
+					}
+					
+					for(long profile2:optionList) {
+						if((profile2 != profile) && (!profileInList(profile2, relationList))) {
 							List<RelationDTO> optionProfileList = recommendManager.sendRelation(profile2);
 							int score = commonFriends(relationList, optionProfileList);
 							if(score > 0) {

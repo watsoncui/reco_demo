@@ -116,29 +116,6 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 					List<Long> optionList = new ArrayList<Long>();
 					for(RelationDTO relation:relationList) {
 						if(null != relation) {
-							List<RelationDTO> hisRelationList = recommendManager.sendRelation(relation.getUploaderPhoneNumber());
-							List<RelationDTO> hisReverseRelationList = recommendManager.sendReverseRelation(relation.getUploaderPhoneNumber());
-							
-							if(null != hisRelationList) {
-								for(RelationDTO hisRelation:hisRelationList) {
-									if(null != hisRelation) {
-										optionList.add(hisRelation.getContactorPhoneNumber());
-									}
-								}
-							}
-							
-							if(null != hisReverseRelationList) {
-								for(RelationDTO hisReverseRelation:hisReverseRelationList) {
-									if(null != hisReverseRelation) {
-										optionList.add(hisReverseRelation.getUploaderPhoneNumber());
-									}
-								}
-							}
-						}
-					}
-					
-					for(RelationDTO relation:reverseRelationList) {
-						if(null != relation) {
 							List<RelationDTO> hisRelationList = recommendManager.sendRelation(relation.getContactorPhoneNumber());
 							List<RelationDTO> hisReverseRelationList = recommendManager.sendReverseRelation(relation.getContactorPhoneNumber());
 							
@@ -160,14 +137,35 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 						}
 					}
 					
+					for(RelationDTO relation:reverseRelationList) {
+						if(null != relation) {
+							List<RelationDTO> hisRelationList = recommendManager.sendRelation(relation.getUploaderPhoneNumber());
+							List<RelationDTO> hisReverseRelationList = recommendManager.sendReverseRelation(relation.getUploaderPhoneNumber());
+							
+							if(null != hisRelationList) {
+								for(RelationDTO hisRelation:hisRelationList) {
+									if(null != hisRelation) {
+										optionList.add(hisRelation.getContactorPhoneNumber());
+									}
+								}
+							}
+							
+							if(null != hisReverseRelationList) {
+								for(RelationDTO hisReverseRelation:hisReverseRelationList) {
+									if(null != hisReverseRelation) {
+										optionList.add(hisReverseRelation.getUploaderPhoneNumber());
+									}
+								}
+							}
+						}
+					}
+					
 					for(long profile2:optionList) {
-						logger.info("" + profile + " " + profile2);
 						if((profile2 != profile) && (!profileInList(profile2, relationList)) && (!profileInReverseList(profile2, reverseRelationList))) {
 							List<RelationDTO> optionProfileList = recommendManager.sendRelation(profile2);
 							List<RelationDTO> optionReverseProfileList = recommendManager.sendReverseRelation(profile2);
 							int score = commonFriends(relationList, optionProfileList, reverseRelationList, optionReverseProfileList);
-							logger.info("" + score);
-							if(score > 0) {
+							if(score > 1.5) {
 								RecommendDTO recommendDTO = new RecommendDTO();
 								recommendDTO.setRecommendPhoneNumber(profile2);
 								recommendDTO.setScore(score);

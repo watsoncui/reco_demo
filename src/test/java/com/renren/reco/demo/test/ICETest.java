@@ -18,7 +18,8 @@ public class ICETest {
 		 Ice.ObjectPrx base = ic.stringToProxy("RecommendService:default -h 10.4.16.206 -p 10000");
 		 RecoServicePrx recommendService = RecoServicePrxHelper.checkedCast(base);
          
-		 long user = 13012345678L;
+		 //long user = 13311397008L;
+		 long user = 13312345678L;
 		 RecommandResult result = recommendService.getRecommandation(user);
 		 System.out.println(result.getSuccess());
 		 System.out.println(result.getErrorCode());

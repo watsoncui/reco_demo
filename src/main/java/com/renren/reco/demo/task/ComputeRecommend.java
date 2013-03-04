@@ -139,13 +139,13 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 								hisRelationList = profileMap.get(relation.getContactorPhoneNumber());
 							} else {
 								hisRelationList = recommendManager.sendRelation(relation.getContactorPhoneNumber());
-								profileMap.put(relation.getContactorPhoneNumber(), relationList);
+								profileMap.put(relation.getContactorPhoneNumber(), hisRelationList);
 							}
 							if(profileReverseMap.containsKey(relation.getUploaderPhoneNumber())) {
 								hisReverseRelationList = profileReverseMap.get(relation.getUploaderPhoneNumber());
 							} else {
 								hisReverseRelationList = recommendManager.sendReverseRelation(relation.getUploaderPhoneNumber());
-								profileReverseMap.put(relation.getUploaderPhoneNumber(), reverseRelationList);
+								profileReverseMap.put(relation.getUploaderPhoneNumber(), hisReverseRelationList);
 							}
 							
 							if(null != hisRelationList) {
@@ -174,13 +174,13 @@ private int commonFriends(List<RelationDTO> relationList1, List<RelationDTO> rel
 								hisRelationList = profileMap.get(relation.getUploaderPhoneNumber());
 							} else {
 								hisRelationList = recommendManager.sendRelation(relation.getUploaderPhoneNumber());
-								profileMap.put(relation.getUploaderPhoneNumber(), relationList);
+								profileMap.put(relation.getUploaderPhoneNumber(), hisRelationList);
 							}
 							if(profileReverseMap.containsKey(relation.getContactorPhoneNumber())) {
 								hisReverseRelationList = profileReverseMap.get(relation.getContactorPhoneNumber());
 							} else {
 								hisReverseRelationList = recommendManager.sendReverseRelation(relation.getContactorPhoneNumber());
-								profileReverseMap.put(relation.getContactorPhoneNumber(), reverseRelationList);
+								profileReverseMap.put(relation.getContactorPhoneNumber(), hisReverseRelationList);
 							}
 							
 							if(null != hisRelationList) {
